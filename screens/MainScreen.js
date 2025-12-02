@@ -4,7 +4,8 @@ import LabeledInput from "../components/LabeledInput";
 
 export default function MainScreen({ navigation }) {
 
-  const API_KEY = "YOUR_API_KEY"; // Replace this
+  // Your actual API Key
+  const API_KEY = "fca_live_8WRUn2zxOJPf0bWADfmP4P8wBMoSkuQ7ArcZCfOd";
 
   const [baseCurrency, setBaseCurrency] = useState("CAD");
   const [destCurrency, setDestCurrency] = useState("");
