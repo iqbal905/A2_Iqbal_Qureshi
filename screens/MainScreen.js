@@ -107,7 +107,7 @@ export default function MainScreen({ navigation }) {
 
       <Button title="Reset" color="grey" onPress={resetForm} />
 
-      {error ? <Text style={styles.error}>{error}</Text> : null}
+      <ErrorMessage message={error} />
 
       {result && (
         <View style={styles.outputBox}>
