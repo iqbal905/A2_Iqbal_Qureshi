@@ -5,7 +5,7 @@ import ErrorMessage from "../components/ErrorMessage";
 import { theme } from "../constants/theme";
 
 export default function MainScreen({ navigation }) {
-  
+  y
   const API_KEY = "fca_live_8WRUn2zxOJPf0bWADfmP4P8wBMoSkuQ7ArcZCfOd";
 
   const [baseCurrency, setBaseCurrency] = useState("CAD");
@@ -24,7 +24,13 @@ export default function MainScreen({ navigation }) {
     return null;
   };
 
- 
+  
+  const validateOnly = () => {
+    const validationError = validateInputs();
+    setError(validationError || "Inputs look good!");
+  };
+
+  
   const resetForm = () => {
     setBaseCurrency("CAD");
     setDestCurrency("");
@@ -33,7 +39,7 @@ export default function MainScreen({ navigation }) {
     setError("");
   };
 
-  
+ 
   const convertCurrency = async () => {
     const validationError = validateInputs();
     if (validationError) {
@@ -80,7 +86,7 @@ export default function MainScreen({ navigation }) {
 
   return (
     <View style={[styles.container, { backgroundColor: theme.background }]}>
-
+      
       <Button title="About App" onPress={() => navigation.navigate("About")} />
 
       <LabeledInput
@@ -97,6 +103,7 @@ export default function MainScreen({ navigation }) {
         placeholder="USD"
       />
 
+
       <LabeledInput
         label="Amount"
         value={amount}
@@ -110,13 +117,14 @@ export default function MainScreen({ navigation }) {
         <Button title="Convert" onPress={convertCurrency} disabled={loading} />
       )}
 
- 
+
+      <Button title="Validate Inputs" color="#0077FF" onPress={validateOnly} />
+
+
       <Button title="Reset" color="grey" onPress={resetForm} />
 
-      
       <ErrorMessage message={error} />
 
-    
       {result && (
         <View style={[styles.outputBox, { backgroundColor: theme.card }]}>
           <Text style={[styles.result, { color: theme.text }]}>
