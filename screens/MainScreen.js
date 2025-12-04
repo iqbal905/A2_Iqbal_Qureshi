@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { View, Text, Button, ActivityIndicator, StyleSheet } from "react-native";
 import LabeledInput from "../components/LabeledInput";
-import ErrorMessage from "../components/ErrorMessage"; 
+import ErrorMessage from "../components/ErrorMessage"; // <-- Make sure you created this component
 
 export default function MainScreen({ navigation }) {
   
+  // Your actual API Key
   const API_KEY = "fca_live_8WRUn2zxOJPf0bWADfmP4P8wBMoSkuQ7ArcZCfOd";
 
   const [baseCurrency, setBaseCurrency] = useState("CAD");
@@ -23,7 +24,7 @@ export default function MainScreen({ navigation }) {
     return null;
   };
 
-  
+ 
   const resetForm = () => {
     setBaseCurrency("CAD");
     setDestCurrency("");
@@ -32,7 +33,7 @@ export default function MainScreen({ navigation }) {
     setError("");
   };
 
- 
+-
   const convertCurrency = async () => {
     const validationError = validateInputs();
     if (validationError) {
@@ -45,3 +46,103 @@ export default function MainScreen({ navigation }) {
     setResult(null);
 
     try {
+      const url = `https://api.freecurrencyapi.com/v1/latest?apikey=${API_KEY}&base_currency=${baseCurrency}`;
+      const response = await fetch(url);
+      const data = await response.json();
+
+      if (!data?.data) {
+        setError("Invalid API response.");
+        setLoading(false);
+        return;
+      }
+
+      const rate = data.data[destCurrency];
+
+      if (!rate) {
+        setError(`Currency ${destCurrency} not found.`);
+        setLoading(false);
+        return;
+      }
+
+      const converted = (Number(amount) * rate).toFixed(2);
+
+      setResult({
+        rate,
+        converted,
+      });
+
+    } catch (err) {
+      setError("Network error: " + err.message);
+    }
+
+    setLoading(false);
+  };
+
+  return (
+    <View style={styles.container}>
+      
+      
+      <Button title="About App" onPress={() => navigation.navigate("About")} />
+
+      
+      <LabeledInput
+        label="Base Currency"
+        value={baseCurrency}
+        onChangeText={(text) => setBaseCurrency(text.trim().toUpperCase())}
+        placeholder="CAD"
+      />
+
+      
+      <LabeledInput
+        label="Destination Currency"
+        value={destCurrency}
+        onChangeText={(text) => setDestCurrency(text.trim().toUpperCase())}
+        placeholder="USD"
+      />
+
+      
+      <LabeledInput
+        label="Amount"
+        value={amount}
+        onChangeText={(text) => setAmount(text.trim())}
+        placeholder="1"
+      />
+
+      
+      {loading ? (
+  <ActivityIndicator size="large" style={{ marginVertical: 20 }} />
+) : (
+  <Button title="Convert" onPress={convertCurrency} disabled={loading} />
+)}
+      
+      <Button title="Reset" color="grey" onPress={resetForm} />
+
+      
+      <ErrorMessage message={error} />
+
+      
+      {result && (
+        <View style={styles.outputBox}>
+          <Text style={styles.result}>Exchange Rate: {result.rate}</Text>
+          <Text style={styles.result}>Converted Amount: {result.converted}</Text>
+        </View>
+      )}
+
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: { flex: 1, padding: 20 },
+  outputBox: { 
+    marginTop: 20, 
+    padding: 15, 
+    borderWidth: 1, 
+    borderRadius: 6 
+  },
+  result: { 
+    fontSize: 18, 
+    fontWeight: "bold" 
+  },
+});
+
