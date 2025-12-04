@@ -1,11 +1,17 @@
 import React, { useState } from "react";
-import { View, Text, Button, ActivityIndicator, StyleSheet } from "react-native";
+import {
+  View,
+  Text,
+  Button,
+  ActivityIndicator,
+  StyleSheet,
+} from "react-native";
 import LabeledInput from "../components/LabeledInput";
-import ErrorMessage from "../components/ErrorMessage"; 
+import ErrorMessage from "../components/ErrorMessage";
 import { theme } from "../constants/theme";
 
 export default function MainScreen({ navigation }) {
-  y
+  y;
   const API_KEY = "fca_live_8WRUn2zxOJPf0bWADfmP4P8wBMoSkuQ7ArcZCfOd";
 
   const [baseCurrency, setBaseCurrency] = useState("CAD");
@@ -16,21 +22,21 @@ export default function MainScreen({ navigation }) {
   const [result, setResult] = useState(null);
   const [error, setError] = useState("");
 
-  
   const validateInputs = () => {
-    if (!/^[A-Z]{3}$/.test(baseCurrency)) return "Base currency must be 3 uppercase letters.";
-    if (!/^[A-Z]{3}$/.test(destCurrency)) return "Destination currency must be 3 uppercase letters.";
-    if (isNaN(amount) || Number(amount) <= 0) return "Amount must be a positive number.";
+    if (!/^[A-Z]{3}$/.test(baseCurrency))
+      return "Base currency must be 3 uppercase letters.";
+    if (!/^[A-Z]{3}$/.test(destCurrency))
+      return "Destination currency must be 3 uppercase letters.";
+    if (isNaN(amount) || Number(amount) <= 0)
+      return "Amount must be a positive number.";
     return null;
   };
 
-  
   const validateOnly = () => {
     const validationError = validateInputs();
     setError(validationError || "Inputs look good!");
   };
 
-  
   const resetForm = () => {
     setBaseCurrency("CAD");
     setDestCurrency("");
@@ -39,7 +45,6 @@ export default function MainScreen({ navigation }) {
     setError("");
   };
 
- 
   const convertCurrency = async () => {
     const validationError = validateInputs();
     if (validationError) {
@@ -76,7 +81,6 @@ export default function MainScreen({ navigation }) {
         rate,
         converted,
       });
-
     } catch (err) {
       setError("Network error: " + err.message);
     }
@@ -86,7 +90,6 @@ export default function MainScreen({ navigation }) {
 
   return (
     <View style={[styles.container, { backgroundColor: theme.background }]}>
-      
       <Button title="About App" onPress={() => navigation.navigate("About")} />
 
       <LabeledInput
@@ -103,7 +106,6 @@ export default function MainScreen({ navigation }) {
         placeholder="USD"
       />
 
-
       <LabeledInput
         label="Amount"
         value={amount}
@@ -117,9 +119,7 @@ export default function MainScreen({ navigation }) {
         <Button title="Convert" onPress={convertCurrency} disabled={loading} />
       )}
 
-
       <Button title="Validate Inputs" color="#0077FF" onPress={validateOnly} />
-
 
       <Button title="Reset" color="grey" onPress={resetForm} />
 
@@ -135,7 +135,6 @@ export default function MainScreen({ navigation }) {
           </Text>
         </View>
       )}
-
     </View>
   );
 }
@@ -143,15 +142,15 @@ export default function MainScreen({ navigation }) {
 const styles = StyleSheet.create({
   container: { flex: 1, padding: 20 },
 
-  outputBox: { 
-    marginTop: 20, 
-    padding: 15, 
-    borderWidth: 1, 
-    borderRadius: 6 
+  outputBox: {
+    marginTop: 20,
+    padding: 15,
+    borderWidth: 1,
+    borderRadius: 6,
   },
 
-  result: { 
-    fontSize: 18, 
-    fontWeight: "bold" 
+  result: {
+    fontSize: 18,
+    fontWeight: "bold",
   },
 });
