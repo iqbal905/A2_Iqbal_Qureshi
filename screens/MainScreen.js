@@ -154,3 +154,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
 });
+
+<Text style={{ marginTop: 30, opacity: 0.6 }}>
+  Powered by FreeCurrencyAPI
+</Text>
