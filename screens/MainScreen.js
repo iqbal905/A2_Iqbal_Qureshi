@@ -8,10 +8,8 @@ import {
 } from "react-native";
 import LabeledInput from "../components/LabeledInput";
 import ErrorMessage from "../components/ErrorMessage";
-import { theme } from "../constants/theme";
 
-export default function MainScreen({ navigation }) {
-  
+export default function MainScreen() {
   const API_KEY = "fca_live_8WRUn2zxOJPf0bWADfmP4P8wBMoSkuQ7ArcZCfOd";
 
   const [baseCurrency, setBaseCurrency] = useState("CAD");
@@ -89,9 +87,8 @@ export default function MainScreen({ navigation }) {
   };
 
   return (
-    <View style={[styles.container, { backgroundColor: theme.background }]}>
-      
-      <Button title="About App" onPress={() => navigation.navigate("About")} />
+    <View style={[styles.container, { backgroundColor: "#f5f5f5" }]}>
+      {/* About screen is accessible via the bottom tab navigation */}
 
       <LabeledInput
         label="Base Currency"
@@ -127,20 +124,19 @@ export default function MainScreen({ navigation }) {
       <ErrorMessage message={error} />
 
       {result && (
-        <View style={[styles.outputBox, { backgroundColor: theme.card }]}>
-          <Text style={[styles.result, { color: theme.text }]}>
+        <View style={[styles.outputBox, { backgroundColor: "#ffffff" }]}>
+          <Text style={[styles.result, { color: "#000000" }]}>
             Exchange Rate: {result.rate}
           </Text>
-          <Text style={[styles.result, { color: theme.text }]}>
+          <Text style={[styles.result, { color: "#000000" }]}>
             Converted Amount: {result.converted}
           </Text>
         </View>
       )}
 
-      <Text style={{ marginTop: 30, opacity: 0.6, color: theme.text }}>
+      <Text style={{ marginTop: 30, opacity: 0.6, color: "#000000" }}>
         Powered by FreeCurrencyAPI
       </Text>
-
     </View>
   );
 }

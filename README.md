@@ -1,7 +1,7 @@
 # 📱 Currency Converter App  
 ### COMP3074 – Assignment 2  
-### Developed by: **Iqbal Qureshi**  
-### Student ID: **101366167**
+### Developed by: **Iqbal Qureshi**  **Regina Slonimsky**
+### Student ID: **101366167** **101491915**
 
 ---
 
@@ -51,8 +51,8 @@ This project includes *all required features* plus additional improvements such 
 
 ## 🧭 **AboutScreen**
 Displays:
-- Full Name: **Iqbal Qureshi**  
-- Student ID: **101366167**
+- Full Name: **Iqbal Qureshi**  **Regina Slonimsky**
+- Student ID: **101366167** **101491915**
 - Short description of app functionality
 
 ---
