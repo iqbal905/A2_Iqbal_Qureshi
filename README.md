@@ -1,50 +1,66 @@
-# Welcome to your Expo app 👋
+# 📱 Currency Converter App  
+### COMP3074 – Assignment 2  
+### Developed by: **Iqbal Qureshi**  
+### Student ID: **101366167**
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+---
 
-## Get started
+## 📝 Overview
 
-1. Install dependencies
+This React Native (Expo) application is built for **COMP3074 – Assignment 2**.  
+The app provides real-time currency conversion using the **FreeCurrencyAPI** platform.
 
-   ```bash
-   npm install
-   ```
+The assignment requirements include:
+- Two screens (MainScreen + AboutScreen)
+- Navigation between screens
+- User input validation
+- API integration
+- Error handling
+- Clean UI and optional enhancements
 
-2. Start the app
+This project includes *all required features* plus additional improvements such as dark mode, input trimming, reusable components, input validation button, and reset functionality.
 
-   ```bash
-   npx expo start
-   ```
+---
 
-In the output, you'll find options to open the app in a
+## 📌 Features
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+### ✅ **MainScreen**
+- Enter:
+  - Base Currency (e.g., CAD, USD)
+  - Destination Currency
+  - Amount to convert
+- Input validation:
+  - 3-letter uppercase ISO currency codes  
+  - Positive numeric amount
+- Fetch latest exchange rates from FreeCurrencyAPI
+- Display:
+  - Exchange rate  
+  - Converted amount  
+- Error handling:
+  - Invalid API key  
+  - Network errors  
+  - Unsupported currency  
+- Loading indicator during API requests
+- Convert button disabled while loading
+- **Reset button** to clear all fields
+- **Validate Inputs** button for checking entries without API calls
+- Dark mode support
+- Reusable LabeledInput & ErrorMessage components
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+---
 
-## Get a fresh project
+## 🧭 **AboutScreen**
+Displays:
+- Full Name: **Iqbal Qureshi**  
+- Student ID: **101366167**
+- Short description of app functionality
 
-When you're ready, run:
+---
 
-```bash
-npm run reset-project
-```
+## 🌐 API Used
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+**FreeCurrencyAPI**  
+https://api.freecurrencyapi.com/v1/latest
 
-## Learn more
+Example request used in this app:
 
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
