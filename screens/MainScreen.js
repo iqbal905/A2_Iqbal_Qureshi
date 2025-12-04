@@ -29,6 +29,14 @@ export default function MainScreen({ navigation }) {
       return;
     }
 
+    const resetForm = () => {
+  setBaseCurrency("CAD");
+  setDestCurrency("");
+  setAmount("1");
+  setResult(null);
+  setError("");
+};
+
     setLoading(true);
     setError("");
     setResult(null);
@@ -96,6 +104,8 @@ export default function MainScreen({ navigation }) {
       ) : (
         <Button title="Convert" onPress={convertCurrency} />
       )}
+
+      <Button title="Reset" color="grey" onPress={resetForm} />
 
       {error ? <Text style={styles.error}>{error}</Text> : null}
 

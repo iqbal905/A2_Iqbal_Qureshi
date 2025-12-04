@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectConfig">
+    <option name="importPaths">
+      <list>
+        <option value="$PROJECT_DIR$" />
+      </list>
+    </option>
+    <option name="jsonFile" value="C:\Users\PC\A2_Iqbal_Qureshi\.api-linter.json" />
+    <option name="yamlFile" value="C:\Users\PC\A2_Iqbal_Qureshi\.api-linter.yaml" />
+  </component>
+</project>
