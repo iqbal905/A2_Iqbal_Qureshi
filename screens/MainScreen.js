@@ -79,25 +79,25 @@ export default function MainScreen({ navigation }) {
       <Button title="About App" onPress={() => navigation.navigate("About")} />
 
       <LabeledInput
-        label="Base Currency"
-        value={baseCurrency}
-        onChangeText={setBaseCurrency}
-        placeholder="CAD"
-      />
+  label="Base Currency"
+  value={baseCurrency}
+  onChangeText={(text) => setBaseCurrency(text.trim().toUpperCase())}
+  placeholder="CAD"
+/>
 
-      <LabeledInput
-        label="Destination Currency"
-        value={destCurrency}
-        onChangeText={setDestCurrency}
-        placeholder="USD"
-      />
+<LabeledInput
+  label="Destination Currency"
+  value={destCurrency}
+  onChangeText={(text) => setDestCurrency(text.trim().toUpperCase())}
+  placeholder="USD"
+/>
 
-      <LabeledInput
-        label="Amount"
-        value={amount}
-        onChangeText={setAmount}
-        placeholder="1"
-      />
+<LabeledInput
+  label="Amount"
+  value={amount}
+  onChangeText={(text) => setAmount(text.trim())}
+  placeholder="1"
+/>
 
       {loading ? (
         <ActivityIndicator size="large" style={{ marginVertical: 20 }} />
