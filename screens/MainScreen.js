@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { View, Text, Button, ActivityIndicator, StyleSheet } from "react-native";
 import LabeledInput from "../components/LabeledInput";
-import ErrorMessage from "../components/ErrorMessage"; // <-- Make sure you created this component
+import ErrorMessage from "../components/ErrorMessage"; 
+import { theme } from "../constants/theme";
 
 export default function MainScreen({ navigation }) {
   
-  // Your actual API Key
   const API_KEY = "fca_live_8WRUn2zxOJPf0bWADfmP4P8wBMoSkuQ7ArcZCfOd";
 
   const [baseCurrency, setBaseCurrency] = useState("CAD");
@@ -33,7 +33,7 @@ export default function MainScreen({ navigation }) {
     setError("");
   };
 
--
+  
   const convertCurrency = async () => {
     const validationError = validateInputs();
     if (validationError) {
@@ -79,12 +79,10 @@ export default function MainScreen({ navigation }) {
   };
 
   return (
-    <View style={styles.container}>
-      
-      
+    <View style={[styles.container, { backgroundColor: theme.background }]}>
+
       <Button title="About App" onPress={() => navigation.navigate("About")} />
 
-      
       <LabeledInput
         label="Base Currency"
         value={baseCurrency}
@@ -92,7 +90,6 @@ export default function MainScreen({ navigation }) {
         placeholder="CAD"
       />
 
-      
       <LabeledInput
         label="Destination Currency"
         value={destCurrency}
@@ -100,7 +97,6 @@ export default function MainScreen({ navigation }) {
         placeholder="USD"
       />
 
-      
       <LabeledInput
         label="Amount"
         value={amount}
@@ -108,23 +104,27 @@ export default function MainScreen({ navigation }) {
         placeholder="1"
       />
 
-      
       {loading ? (
-  <ActivityIndicator size="large" style={{ marginVertical: 20 }} />
-) : (
-  <Button title="Convert" onPress={convertCurrency} disabled={loading} />
-)}
-      
+        <ActivityIndicator size="large" style={{ marginVertical: 20 }} />
+      ) : (
+        <Button title="Convert" onPress={convertCurrency} disabled={loading} />
+      )}
+
+ 
       <Button title="Reset" color="grey" onPress={resetForm} />
 
       
       <ErrorMessage message={error} />
 
-      
+    
       {result && (
-        <View style={styles.outputBox}>
-          <Text style={styles.result}>Exchange Rate: {result.rate}</Text>
-          <Text style={styles.result}>Converted Amount: {result.converted}</Text>
+        <View style={[styles.outputBox, { backgroundColor: theme.card }]}>
+          <Text style={[styles.result, { color: theme.text }]}>
+            Exchange Rate: {result.rate}
+          </Text>
+          <Text style={[styles.result, { color: theme.text }]}>
+            Converted Amount: {result.converted}
+          </Text>
         </View>
       )}
 
@@ -134,15 +134,16 @@ export default function MainScreen({ navigation }) {
 
 const styles = StyleSheet.create({
   container: { flex: 1, padding: 20 },
+
   outputBox: { 
     marginTop: 20, 
     padding: 15, 
     borderWidth: 1, 
     borderRadius: 6 
   },
+
   result: { 
     fontSize: 18, 
     fontWeight: "bold" 
   },
 });
-
