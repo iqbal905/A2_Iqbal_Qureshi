@@ -1,6 +1,11 @@
 import { View, Text, TextInput, StyleSheet } from "react-native";
 
-export default function LabeledInput({ label, value, onChangeText, placeholder }) {
+export default function LabeledInput({
+  label,
+  value,
+  onChangeText,
+  placeholder,
+}) {
   return (
     <View style={styles.container}>
       <Text style={styles.label}>{label}</Text>
