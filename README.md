@@ -51,8 +51,8 @@ This project includes *all required features* plus additional improvements such 
 
 ## 🧭 **AboutScreen**
 Displays:
-- Full Name: **Iqbal Qureshi**  **Regina Slonimsky**
-- Student ID: **101366167** **101491915**
+- Full Name: **Iqbal Qureshi** , **Regina Slonimsky**
+- Student ID: **101366167** , **101491915**
 - Short description of app functionality
 
 ---
