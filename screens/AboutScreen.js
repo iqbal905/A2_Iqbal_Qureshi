@@ -5,8 +5,12 @@ export default function AboutScreen() {
     <View style={styles.container}>
       <Text style={styles.title}>About This App</Text>
 
-      <Text style={styles.text}>Name: Iqbal Qureshi</Text>
-      <Text style={styles.text}>Student ID: 101366167</Text>
+      <Text style={styles.text}>Name: Iqbal Qureshi</Text><Text style={styles.text}>Student ID: 101366167</Text>
+      <Text style={styles.text}>Name: Regina Slonimsky</Text><Text style={styles.text}>Student ID: 101491915</Text>
+
+
+
+      <Text style={styles.text}>Prof: Mohammad Kiani</Text>
 
       <Text style={styles.description}>
         This app converts currency using freecurrencyapi.com and shows the exchange rate and converted amount.
